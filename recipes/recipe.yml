@@ -12,6 +12,11 @@ image-version: stable # latest is also supported if you want new updates ASAP
 modules:
   - type: rpm-ostree
     install:
-      - emacs 
+      - firefox 
+
+modules:
+  - type: bling
+    install:
+      - 1password
 
   - type: signing  # Sets up signature verification properly
