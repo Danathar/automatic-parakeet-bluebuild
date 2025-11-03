@@ -3,19 +3,21 @@
 # image will be published to ghcr.io/<user>/<name>
 name: automatic-parakeet-bluebuild
 # description will be included in the image's metadata
-description: Custom Aurora-DX with bluebuild  
+description: Custom Aurora-DX with bluebuild   
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/aurora-dx
 image-version: stable # latest is also supported if you want new updates ASAP
 
 modules:
-  - type: rpm-ostree
-    install:
-      - firefox 
+ - type: dnf
+   install:
+     packages:
+       - firefox  
 
-  - type: bling
-    install:
-      - 1password
+ - type: bling
+   install:
+     - 1password
 
-  - type: signing  # Sets up signature verification properly
+ - type: signing  # Sets up signature verification properly
+
