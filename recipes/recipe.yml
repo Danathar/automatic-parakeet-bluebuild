@@ -15,6 +15,7 @@ modules:
      packages:
        - firefox  
        - duperemove 
+       - webkit2gtk4.1
 
  - type: bling
    install:
