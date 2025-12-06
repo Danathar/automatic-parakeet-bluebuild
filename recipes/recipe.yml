@@ -16,6 +16,7 @@ modules:
        - firefox  
        - duperemove 
        - webkit2gtk4.1
+       - nethack
 
  - type: bling
    install:
