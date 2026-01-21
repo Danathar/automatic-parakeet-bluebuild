@@ -10,7 +10,7 @@ base-image: ghcr.io/ublue-os/aurora-dx
 image-version: stable # latest is also supported if you want new updates ASAP
 
 modules:
- - type: dnf5
+ - type: dnf
    install:
      packages:
        - webkit2gtk4.1
