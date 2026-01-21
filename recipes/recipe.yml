@@ -10,16 +10,10 @@ base-image: ghcr.io/ublue-os/aurora-dx
 image-version: stable # latest is also supported if you want new updates ASAP
 
 modules:
- - type: dnf
+ - type: dnf5
    install:
      packages:
-       - firefox  
-       - duperemove 
        - webkit2gtk4.1
-
- - type: bling
-   install:
-     - 1password
 
  - type: signing  # Sets up signature verification properly
 
