@@ -1,1 +1,1 @@
-This is my Custom verson of Aurora-DX. For the most part for Firefox and 1password.
+This is my Custom verson of Aurora-DX. Add any packages to recipe.yml under recipe folder if you copy.
