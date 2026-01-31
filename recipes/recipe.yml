@@ -1,26 +1,20 @@
----
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-name: automatic-parakeet-bluebuild
-description: Custom Aurora-DX with bluebuild
-
-base-image: ghcr.io/ublue-os/aurora-dx
-image-version: stable
-
 modules:
   - type: dnf
     install:
       packages:
         - webkit2gtk4.1
 
+  - type: files
+    files:
+      - path: etc/yum.repos.d/rpmfusion-free.repo
+        source: files/etc/yum.repos.d/rpmfusion-free.repo
+      - path: etc/yum.repos.d/rpmfusion-nonfree.repo
+        source: files/etc/yum.repos.d/rpmfusion-nonfree.repo
+
   - type: rpm-ostree
     install:
-      # Enable RPM Fusion Free + Nonfree for this Fedora version
-      - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-%OS_VERSION%.noarch.rpm
-      - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-%OS_VERSION%.noarch.rpm
-      # Broadcom proprietary driver from RPM Fusion
       - akmod-wl
 
-  # Ensure wl gets requested at boot
   - type: files
     files:
       - path: etc/modules-load.d/wl.conf
