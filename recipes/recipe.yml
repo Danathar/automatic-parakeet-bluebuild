@@ -12,20 +12,22 @@ modules:
       packages:
         - webkit2gtk4.1
 
-  # Replaces copying rpmfusion-free.repo and rpmfusion-nonfree.repo into /etc/yum.repos.d
   - type: bling
     install:
       - rpmfusion
 
+  - type: akmods
+    install:
+      - wl
+
   - type: rpm-ostree
     install:
-      - akmod-wl
+      - broadcom-wl
 
   - type: files
     files:
-      - path: etc/modules-load.d/wl.conf
-        content: |
-          wl
+      - source: etc/modules-load.d/wl.conf
+        destination: /etc/modules-load.d/wl.conf
 
   - type: signing
 
