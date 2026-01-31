@@ -12,13 +12,15 @@ modules:
       packages:
         - webkit2gtk4.1
 
-  # Pull prebuilt Broadcom wl kernel module from ublue akmods
-  - type: akmods
-    base: main        # matches Aurora’s kernel family
+  - type: rpm-ostree
     install:
-      - wl
+      # Enable RPM Fusion Free + Nonfree for this Fedora version
+      - https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-%OS_VERSION%.noarch.rpm
+      - https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-%OS_VERSION%.noarch.rpm
+      # Broadcom proprietary driver from RPM Fusion
+      - akmod-wl
 
-  # Ensure wl is requested at boot
+  # Ensure wl gets requested at boot
   - type: files
     files:
       - path: etc/modules-load.d/wl.conf
