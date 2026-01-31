@@ -1,4 +1,5 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+
 name: automatic-parakeet-bluebuild
 description: Custom Aurora-DX with bluebuild
 
@@ -11,12 +12,10 @@ modules:
       packages:
         - webkit2gtk4.1
 
-  - type: files
-    files:
-      - source: etc/yum.repos.d/rpmfusion-free.repo
-        destination: /etc/yum.repos.d/rpmfusion-free.repo
-      - source: etc/yum.repos.d/rpmfusion-nonfree.repo
-        destination: /etc/yum.repos.d/rpmfusion-nonfree.repo
+  # Replaces copying rpmfusion-free.repo and rpmfusion-nonfree.repo into /etc/yum.repos.d
+  - type: bling
+    install:
+      - rpmfusion
 
   - type: rpm-ostree
     install:
