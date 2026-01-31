@@ -1,3 +1,10 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: automatic-parakeet-bluebuild
+description: Custom Aurora-DX with bluebuild
+
+base-image: ghcr.io/ublue-os/aurora-dx
+image-version: stable
 modules:
   - type: dnf
     install:
