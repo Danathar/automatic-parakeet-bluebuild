@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 
 name: automatic-parakeet-bluebuild
-description: Custom Aurora-DX with bluebuild
+description: Custom Aurora-DX with bluebuild (b43 wifi)
 
 base-image: ghcr.io/ublue-os/aurora-dx
 image-version: stable
@@ -16,18 +16,15 @@ modules:
     install:
       - rpmfusion
 
-  - type: akmods
-    install:
-      - wl
-
+  # Enable RPM Fusion "nonfree tainted" repo (needed for b43-firmware)
   - type: rpm-ostree
     install:
-      - broadcom-wl
+      - rpmfusion-nonfree-release-tainted
 
-  - type: files
-    files:
-      - source: etc/modules-load.d/wl.conf
-        destination: /etc/modules-load.d/wl.conf
+  # Install Broadcom b43 firmware (kernel module b43 is already in the kernel; firmware is the missing piece)
+  - type: rpm-ostree
+    install:
+      - b43-firmware
 
   - type: signing
 
